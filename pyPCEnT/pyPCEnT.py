@@ -170,19 +170,22 @@ class pyPCEnT(object):
         self.NStates = NStates
 
         # Create the matrices and vectors used for calculation
+        # Pu: Boltzmann distribution of proton states on the reactant side
+        # Pw: Boltzmann distribution of proton states on the ground state
         # Suv: overlap matrix of proton vibrational wave functions associated with the reactant and product states
         # Suw: overlap matrix of proton vibrational wave functions associated with the reactant and ground states
         # Swv: overlap matrix of proton vibrational wave functions associated with the ground and product states
         # Iuv: matrix of spectral overlap integral
-        # Pu: Boltzmann distribution of proton states on the reactant side
-        # Pw: Boltzmann distribution of proton states on the ground state
-        # total rate constants is \sum_u\sum_v Pu*|Suv|^2*Iuv
+        # kuv: contribution of the (u,v) pair to the total PCET rate constant
+        # total rate constants is \sum_u\sum_v Pu*|Suv|^2*Iuv = \sum_u\sum_v kuv
+        self.Pu = np.zeros(NStates)
+        self.Pw = np.zeros(NStates)
         self.Suv = np.zeros((NStates, NStates))
         self.Suw = np.zeros((NStates, NStates))
         self.Swv = np.zeros((NStates, NStates))
         self.Iuv = np.zeros((NStates, NStates))
-        self.Pu = np.zeros(NStates)
-        self.Pw = np.zeros(NStates)
+        self.kuv = np.zeros((NStates, NStates))
+
 
     def check_normalization(self, err=5e-3, renormalize=True):
         """

@@ -35,7 +35,7 @@ The input of proton potentials and line shape functions can be either a 2D array
 
 If these inputs are 2D array, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (N, 2), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $\hbar\omega$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
 
-If these inputs are functions, they must only take one argument, for proton potentials, it is the proton position in Angstrom, for line shape functions it is $\hbar\omega$ in eV. The unit of the proton potentials should be eV. The unit of the line shape functions should be eV<sup>-1</sup>
+If these inputs are functions, they must only take one argument, for proton potentials, it is the proton position in Angstrom, for line shape functions it is $\hbar\omega$ in eV. The unit of the proton potentials should be eV. The unit of the line shape functions should be eV<sup>-1</sup>.
 
 6. `ConvolKernel` (2D array or function): convolution kernel which describes the reorganization of common vibrational modes shared by the donor and the acceptor, default = None
 

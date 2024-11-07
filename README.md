@@ -41,7 +41,7 @@ If these inputs are functions, they must only take one argument, for proton pote
 
 The default setting `ConvolKernel = None` indicates that there is no reorganization of common modes. One important example of such case is intermolecular PCEnT process, where there is no common mode. 
 
-7. `Vel (float)`: electronic coupling between reactant and product electronic states in eV, default = 0.0434 eV = 1 kcal/mol
+7. `Vel` (float): electronic coupling between reactant and product electronic states in eV, default = 0.0434 eV = 1 kcal/mol
 
 Since PCEnT is a non-radiative process, the electronic ground state does not participate in the process. However, the proton potential of the ground state is essential to calculate the total donor emission and acceptor absorption spectra for analyzing the spectral overlap of the system. 
 
@@ -70,8 +70,8 @@ ProdProtonPot = fit_poly8(rp, E_Prod)
 # parameters used to generate Gaussian line shapes
 hbaromega_Dem = 2.83          # transition energy in eV  for donor emission between the two minima, without any ZPEs 
 hbaromega_Aabs = 3.10         # transition energy in eV  for acceptor absorption between the two minima, without any ZPEs
-S_Dem = 0.50            # Stokes shift (2 x reorganization energy) in eV for donor emission
-S_Aabs = 0.91           # Stokes shift (2 x reorganization energy) in eV for acceptor absorption 
+S_Dem = 0.50                  # Stokes shift (2 x reorganization energy) in eV for donor emission
+S_Aabs = 0.91                 # Stokes shift (2 x reorganization energy) in eV for acceptor absorption 
 
 # use the gen_Gaussian_lineshape function defined in pyPCEnT.functions to generate callable functions as input quantities
 Dem = gen_Gaussian_lineshape(hbaromega_Dem, S_Dem, T=T)
@@ -81,10 +81,27 @@ Aabs = gen_Gaussian_lineshape(hbaromega_Aabs, S_Aabs, T=T)
 system = pyPCEnT(GSProtonPot, ReacProtonPot, ProdProtonPot, Dem, Aabs, Vel=Vel)
 ```
 
-### Calculation
-#### General Procedure
+#### Other Parameters
+Other parameters that can be modified during the initialization are
 
+8. `NStates` (int): number of proton vibrational states to be calculated, default = 10. One should test the convergence with respect to this quantity. 
+9. `NGridPot` (int): number of grid points used for FGH calculation, default = 128
+10. `NGridLineshape` (int): number of grip points used to calculate spectral overlap integral, defaut = 500
+11. `FitOrder` (int): order of polynomial to fit the proton potential, default = 8, This is only useful when some of the proton potentials, `GSProtonPot`, `ReacProtonPot`, and `ProdProtonPot`, are provided as 2D arrays. Another possible value for this is 6. 
+
+### Calculation
+#### PCEnT Rate Constant
+In a typical calculation of the nonadiabatic PCEnT rate constant, we first need to solve the 1D Schrödinger equations for the proton moving in the proton potentials associated with the reactant and product electronic states. This calculation yields the proton vibrational energy levels and wave functions, which in turn determine the Boltzmann population of the reactant vibronic states, $P_{\mu}$, the overlap integral between the proton vibrational wave functions associated with the reactant and product electronic states, $S_{\mu\nu}$, as well as the transition frequencies between all vibronic states, $\omega_{\mu 0}^{\rm D}$ and $\omega_{0 \nu}^{\rm A}$. We will calculate $P_{\mu}$, $S_{\mu\nu}$, $\omega_{\mu 0}^{\rm D}$, and $\omega_{0 \nu}^{\rm A}$ for all $\mu$ and $\nu$ from 0 to `NStates`. These quantities will be fed into the rate constant expression to give the final results. 
+
+All these steps have been integrated in the method `pyPCEnT.calculate`.  This method takes two arguments, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. Follow by the previous example, we can calculate the PCEnT rate constant and the kinetic isotope effect (KIE) by: 
+```python
+from pyPCEnT.units import massH, massD
+
+k_tot_H = system.calculate(massH, T)
+k_tot_D = system.calculate(massD, T)
+KIE = k_tot_H/k_tot_D
+```
 
 ## Citation
 If you find this kinetic model helpful, please cite the following paper: 
-1. Cui, K.; Hammes-Schiffer, S.; Theory for Proton-Coupled Energy Transfer, *J. Chem. Phys.* **2024**, *161*, 034113. DOI:[10.1063/5.0217546](https://doi.org/10.1063/5.0217546)
+1. Cui, K.; Hammes-Schiffer, S.; Theory for Proton-Coupled Energy Transfer, *J. Chem. Phys.* **2024**, *161*, 034113. [DOI:10.1063/5.0217546](https://doi.org/10.1063/5.0217546)

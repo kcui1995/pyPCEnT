@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pyPCEnT2 import pyPCEnT
-from pyPCEnT2.functions import gen_Gaussian_lineshape, fit_poly8 
-from pyPCEnT2.units import hbar, kcal2eV, massH, massD
+from pyPCEnT import pyPCEnT
+from pyPCEnT.functions import gen_Gaussian_lineshape, fit_poly8 
+from pyPCEnT.units import hbar, kcal2eV, massH, massD
 
 # define conditions
 T = 77

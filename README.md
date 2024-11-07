@@ -87,7 +87,9 @@ Other parameters that can be modified during the initialization are
 8. `NStates` (int): number of proton vibrational states to be calculated, default = 10. One should test the convergence with respect to this quantity. 
 9. `NGridPot` (int): number of grid points used for FGH calculation, default = 128
 10. `NGridLineshape` (int): number of grip points used to calculate spectral overlap integral, defaut = 500
-11. `FitOrder` (int): order of polynomial to fit the proton potential, default = 8, This is only useful when some of the proton potentials, `GSProtonPot`, `ReacProtonPot`, and `ProdProtonPot`, are provided as 2D arrays. Another possible value for this is 6. 
+11. `FitOrder` (int): order of polynomial to fit the proton potential, default = 8, This is only useful when some of the proton potentials, `GSProtonPot`, `ReacProtonPot`, and `ProdProtonPot`, are provided as 2D arrays. Another possible value for this is 6.
+
+When initializing, the program will automatically determine the proper ranges of $\hbar\omega$ or proton position to perform subsequent numerical calculations. Users could fine tune these ranges by parseing additional inputs `rmin`, `rmax`, `hbaromega_min`, and `hbaromega_max`. 
 
 ### Calculation
 #### PCEnT Rate Constant

@@ -105,5 +105,5 @@ KIE = k_tot_H/k_tot_D
 ```
 
 ## Citation
-If you find this code helpful, please cite the following paper: 
+If you used this code for your research, please cite the following paper: 
 1. Cui, K.; Hammes-Schiffer, S.; Theory for Proton-Coupled Energy Transfer, *J. Chem. Phys.* **2024**, *161*, 034113. [DOI:10.1063/5.0217546](https://doi.org/10.1063/5.0217546)

@@ -103,7 +103,7 @@ When initializing, the program will automatically determine the proper ranges of
 #### PCEnT Rate Constant
 In a typical calculation of the nonadiabatic PCEnT rate constant, we first need to solve the 1D Schrödinger equations for the proton moving in the proton potentials associated with the reactant and product electronic states. This calculation yields the proton vibrational energy levels and wave functions, which in turn determine the Boltzmann population of the reactant vibronic states, $`P_{\mu}`$, the overlap integral between the proton vibrational wave functions associated with the reactant and product electronic states, $`S_{\mu\nu}`$, as well as the transition frequencies between all vibronic states, $`\omega_{\mu 0}^{\rm D}`$ and $`\omega_{0 \nu}^{\rm A}`$. We will calculate $`P_{\mu}`$, $`S_{\mu\nu}`$, $`\omega_{\mu 0}^{\rm D}`$, and $`\omega_{0 \nu}^{\rm A}`$ for all $`\mu`$ and $`\nu`$ from 0 to `NStates`. These quantities will be fed into the rate constant expression to give the final results. 
 
-All these steps have been integrated in the method `pyPCEnT.calculate`.  This method takes two arguments, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns the calculated rate constant at the given condition. Follow by the previous example, we can calculate the PCEnT rate constant and the kinetic isotope effect (KIE) by: 
+All these steps have been integrated in the method `pyPCEnT.calculate`.  This method takes two parameters, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns the calculated rate constant at the given condition. Follow by the previous example, we can calculate the PCEnT rate constant and the kinetic isotope effect (KIE) by: 
 ```python
 from pyPCEnT.units import massH, massD
 
@@ -159,13 +159,13 @@ In the expression of the nonadiabatic PCEnT rate constant, the line shape functi
 \tilde{L}_{\rm A, abs}(\omega) = \sum_{\sigma',\nu} P_{\sigma'} |S_{\sigma'\nu}|^2 L_{\rm A, abs}(\omega - \omega_{\sigma'\nu}^{\rm A})
 ```
 
-Note that these expressions involve different Boltzmann distributions and overlap integrals between proton vibtational wave functions. The arguments in the line shape functions $L_{\rm D,em}$ and $L_{\rm A,abs}$ are also different. Here $`\sigma`$ and $`\sigma'`$ label the proton vibrational states associated with the electronic ground state. Thus $`P_{\sigma'}`$ is the Boltzmann population of the vibronic states associated with the electronic ground state, $`S_{\mu\sigma}`$ and $`S_{\sigma'\nu}`$ are overlap integrals between the proton vibrational wave functions associated with the reactant/product state and the ground state. 
+Note that these expressions involve different Boltzmann distributions and overlap integrals between proton vibtational wave functions. The parameters in the line shape functions $L_{\rm D,em}$ and $L_{\rm A,abs}$ are also different. Here $`\sigma`$ and $`\sigma'`$ label the proton vibrational states associated with the electronic ground state. Thus $`P_{\sigma'}`$ is the Boltzmann population of the vibronic states associated with the electronic ground state, $`S_{\mu\sigma}`$ and $`S_{\sigma'\nu}`$ are overlap integrals between the proton vibrational wave functions associated with the reactant/product state and the ground state. 
 
 The total donor emission and acceptor absorption spectra can be calculated by calling
 ```python
 total_Dem, total_Aabs = system.calc_total_spectra(massH, T)
 ```
-This method also takes two arguments, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns two callable functions corresponds to $`\tilde{L}_{\rm D,em}`$ and $`\tilde{L}_{\rm A,abs}`$. One can make a plot of these line shape functions by
+This method also takes two parameters, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns two callable functions corresponds to $`\tilde{L}_{\rm D,em}`$ and $`\tilde{L}_{\rm A,abs}`$. One can make a plot of these line shape functions by
 ```python
 import matplotlib.pyplot as plt
 

@@ -18,11 +18,11 @@ class pyPCEnT(object):
 
     The input parameters are:
         GSProtonPot (2D array or function): proton potential of the ground state
-        ReacProtonPot (2D array or function): proton potential of the reactant
-        ProdProtonPot (2D array or function): proton potential of the product
+        ReacProtonPot (2D array or function): proton potential of the reactant state
+        ProdProtonPot (2D array or function): proton potential of the product state
         DonorEmLineshape (2D array or function): line shape function for donor emission
         AcceptorAbsLineshape (2D array or function): line shape function for acceptor absorption
-        ConvolKernel (2D array or function): convolution kernel which describes the common vibrational modes shared by the donor and the acceptor
+        ConvolKernel (2D array or function): convolution kernel which describes the reorganization of common vibrational modes shared by the donor and the acceptor, default = None
         Vel (float): electronic coupling between reactant and product states in eV, default = 0.0434 eV = 1 kcal/mol
         NStates (int): number of proton vibrational states to be calculated, default = 10
         NGridPot (int): number of grid points used for FGH calculation, default = 128

@@ -165,7 +165,21 @@ The total donor emission and acceptor absorption spectra can be calculated by ca
 ```python
 total_Dem, total_Aabs = system.calc_total_spectra(massH, T)
 ```
-This method also takes two arguments, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns two callable functions corresponds to $`\tilde{L}_{\rm D,em}`$ and $`\tilde{L}_{\rm A,abs}`$. 
+This method also takes two arguments, the mass of the particle, which should be set to the mass of the proton or deuterium, and the temperature of the system. It returns two callable functions corresponds to $`\tilde{L}_{\rm D,em}`$ and $`\tilde{L}_{\rm A,abs}`$. One can make a plot of these line shape functions by
+```python
+import matplotlib.pyplot as plt
+
+hbaromega = np.linspace(0, 6, 100)
+plt.plot(hbaromega, total_Dem(hbaromega), 'b-', lw=2, label=r'$\tilde{L}_{\rm D,em}(\omega)$')
+plt.plot(hbaromega, total_Aabs(hbaromega), 'r-', lw=2, label=r'$\tilde{L}_{\rm A,abs}(\omega)$')
+```
+
+The quantities $`P_{\sigma'}`$, $`S_{\mu\sigma}`$, and $`S_{\sigma'\nu}`$ can be accesses via
+```python
+Pw = system.get_ground_state_distributions()
+Suw = system.get_proton_overlap_matrix_ReacGS()
+Swv = system.get_proton_overlap_matrix_GSProd()
+```
 
 ## Citation
 If you used this code for your research, please cite the following paper: 

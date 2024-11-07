@@ -104,6 +104,37 @@ k_tot_D = system.calculate(massD, T)
 KIE = k_tot_H/k_tot_D
 ```
 
+#### Analyze the Result
+The calculated proton vibrational energy levels and wave functions can be accessed through
+```python
+Evib_GS, wfc_GS = system.get_ground_proton_states()
+Evib_reactant, wfc_reactant = system.get_reactant_proton_states()
+Evib_product, wfc_product = system.get_product_proton_states()
+```
+$P_{\mu}$, $S_{\mu\nu}$, and the spectral convolution integral, which is defined as
+
+$$I_{\mu\nu} = \iint\mathrm{d}\omega_1 \mathrm{d}\omega_2\ L_{\rm D,em}(\omega_1-\omega_{\mu 0}^{\rm D}) K(\omega_1-\omega_2) L_{\rm A,abs}(\omega_2-\omega_{0\nu}^{\rm A})$$
+
+can be accessed using the methods
+```python
+Pu = system.get_reactant_state_distributions()
+Suv = system.get_proton_overlap_matrix()
+Iuv = system.get_spectral_overlap_matrix()
+```
+
+The contribution of a given $(\mu,\nu)$ pair is given by
+
+$$k_{\mu\nu} = \frac{1}{4\pi^2\hbar^2}|V_{\rm el}|^2 P_{\mu}|S_{\mu\nu}|^2 I_{\mu\nu}$$
+
+$${\rm \\%\ Contrib.} = \frac{k_{\mu\nu}}{k_{\rm PCEnT}}$$
+
+which can be obtained from the code using
+```python
+kuv = system.get_kinetic_contribution_matrix()
+k_tot = system.get_total_rate_constant()
+percentage_contribution = kuv/k_tot
+```
+
 ## Citation
 If you used this code for your research, please cite the following paper: 
 1. Cui, K.; Hammes-Schiffer, S.; Theory for Proton-Coupled Energy Transfer, *J. Chem. Phys.* **2024**, *161*, 034113. [DOI:10.1063/5.0217546](https://doi.org/10.1063/5.0217546)

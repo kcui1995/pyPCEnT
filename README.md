@@ -1,7 +1,7 @@
 # pyPCEnT
 Python implementation of the nonadiabatic PCEnT theory. A detailed description of the theory can be found in Ref. \[1\], the calculation is based on the following equation, 
 
-$$k_{\rm PCEnT} = \frac{1}{4\pi^2\hbar^2}|V_{\rm el}|^2\sum_{\mu,\nu}P_{\mu}|S_{\mu\nu}|^2 \iint\mathrm{d}\omega_1\,\mathrm{d}\omega_2\,L_{\rm D,em}(\omega_1-\omega_{\mu 0}^{\rm D}) K(\omega_1-\omega_2) L_{\rm A,abs}(\omega_2-\omega_{0\nu}^{\rm A})$$
+$$k_{\rm PCEnT} = \frac{1}{4\pi^2\hbar^2}|V_{\rm el}|^2\sum_{\mu,\nu}P_{\mu}|S_{\mu\nu}|^2 \iint\mathrm{d}\omega_1 \mathrm{d}\omega_2\ L_{\rm D,em}(\omega_1-\omega_{\mu 0}^{\rm D}) K(\omega_1-\omega_2) L_{\rm A,abs}(\omega_2-\omega_{0\nu}^{\rm A})$$
 
 where $V_{\rm el}$ is the electronic coupling between reactant and product electronic states, $P_{\mu}$ is the Boltzmann population of the reactant vibronic states, $S_{\mu\nu}$ is the overlap integral between the proton vibrational wave functions associated with the reactant and product electronic states, $L_{\rm D,em}(\omega_1-\omega_{\mu 0}^{\rm D})$ and $L_{\rm A,abs}(\omega_2-\omega_{0\nu}^{\rm A})$ are normalized donor emission and adsorption line shape functions, and $K(\omega_1-\omega_2)$ is the convolution kernel which describes the reorganization of common vibrational modes shared by the donor and the acceptor. 
 
@@ -13,7 +13,7 @@ $$L_{\rm A,abs}(\omega-\omega_{0 \nu}^{\rm A}) = \frac{2\pi\hbar}{\sqrt{2\pi s_{
 
 $$K(\omega_1-\omega_2) = \frac{2\pi\hbar}{\sqrt{2\pi s_{\rm com} k_{\rm B}T}}\exp\left(-\frac{(\hbar(\omega_1-\omega_2) - s_{\rm com}/2)^2}{2 s_{\rm com} k_{\rm B}T}\right)$$
 
-where $\omega_{\mu 0}^{\rm D}$ and $\omega_{0 \nu}^{\rm A}$ should be calculated as the vertical transition frequencies (with all nuclei other than the transferring proton fixed), $k_{\rm B}T$ is the thermal energy, and $s_D$ and $s_A$ are the Stokes shift of the transition, which defines the width of the line shape function. For harmonic surfaces, they are also related to the reorganization energy $\lambda$ of the transition via $s = 2\lambda$. $s_{\rm com}$ can also be viewed as a Stokes shift term, but only includes the reorganzation of the common modes. When $s_{\rm com} \rightarrow 0$, $K(\omega_1-\omega_2) \rightarrow 2\pi\delta(\omega_1-\omega_2)$. 
+where $\omega_{\mu 0}^{\rm D}$ and $\omega_{0 \nu}^{\rm A}$ should be calculated as the vertical transition frequencies (with all nuclei other than the transferring proton fixed), $k_{\rm B}T$ is the thermal energy, and $s_D$ and $s_A$ are the Stokes shift of the transition, which defines the width of the line shape function. For harmonic surfaces, they are also related to the reorganization energy $\lambda$ of the transition via $s = 2\lambda$. $s_{\rm com}$ can also be viewed as a Stokes shift term, but it only includes the reorganzation of the common modes. When $s_{\rm com} \rightarrow 0$, $K(\omega_1-\omega_2) \rightarrow 2\pi\delta(\omega_1-\omega_2)$. 
 
 ## Installation 
 To use the kinetic model, simply download the code and add it to your `$PYTHONPATH` variable.
@@ -43,7 +43,7 @@ The default setting `ConvolKernel = None` indicates that there is no reorganizat
 
 7. `Vel (float)`: electronic coupling between reactant and product electronic states in eV, default = 0.0434 eV = 1 kcal/mol
 
-Since PCEnT is a non-radiative process, the electronic ground state does not participate in the process. However, the proton potential of the ground state is essential to calculate the donor emission and acceptor absorption spectra for analyzing the spectral overlap of the system. 
+Since PCEnT is a non-radiative process, the electronic ground state does not participate in the process. However, the proton potential of the ground state is essential to calculate the total donor emission and acceptor absorption spectra for analyzing the spectral overlap of the system. 
 
 #### Example
 The following code set up an `pyPCEnT` object for rate constant calculation. 

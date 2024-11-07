@@ -35,7 +35,7 @@ class pyPCEnT(object):
     def __init__(self, GSProtonPot, ReacProtonPot, ProdProtonPot, DonorEmLineshape, AcceptorAbsLineshape, ConvolKernel=None, Vel=0.0434, NStates=10, NGridPot=256, NGridLineshape=500, FitOrder=8, **kwargs):
         """
         *** Initialization ***
-        The input of proton potentials and lins shape functions can be either a 2D array or a callable function
+        The input of proton potentials and line shape functions can be either a 2D array or a callable function
 
         If these inputs are 2D array, a fitting will be performed to create a callable function for subsequent calculations
         By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions

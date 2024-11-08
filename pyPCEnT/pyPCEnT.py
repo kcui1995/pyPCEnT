@@ -29,28 +29,28 @@ class pyPCEnT(object):
         NGridLineshape (int): number of grip points used to calculate spectral overlap integral, defaut = 500
         FitOrder (int): order of polynomial to fit the proton potential, default = 8 
 
-    The program will automatically determine the ranges of \hbar\omega or proton position to perform subsequent calculations
-    Users could fine tune these ranges by parseing additional inputs 'rmin', 'rmax', 'hbaromega_min', 'hbaromega_max'
+    The program will automatically determine the ranges of \hbar\omega or proton position to perform subsequent calculations. 
+    Users could fine tune these ranges by parseing additional inputs 'rmin', 'rmax', 'hbaromega_min', 'hbaromega_max'. 
     """
     def __init__(self, GSProtonPot, ReacProtonPot, ProdProtonPot, DonorEmLineshape, AcceptorAbsLineshape, ConvolKernel=None, Vel=0.0434, NStates=10, NGridPot=256, NGridLineshape=500, FitOrder=8, **kwargs):
         """
         *** Initialization ***
-        The input of proton potentials and line shape functions can be either a 2D array or a callable function
+        The input of the proton potential and the line shape function can be either a 2D array or a callable function. 
 
-        If these inputs are 2D array, a fitting will be performed to create a callable function for subsequent calculations
-        By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions
+        If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. 
+        By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. 
         The 2D array should have shape (N, 2),
-        for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV
-        for line shape functions, the first row is \hbar\omega in eV, the second row is the lins shape function in eV^-1
+        for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, 
+        for line shape functions, the first row is \hbar\omega in eV, the second row is the lins shape function in eV^-1. 
 
         If these inputs are functions, they must only take one argument,
-        for proton potentials, it is the proton position in Angstrom
-        for line shape functions it is \hbar\omega in eV
-        The unit of the proton potentials should be eV
-        The unit of the line shape functions should be eV^-1
+        for proton potentials, it is the proton position in Angstrom, 
+        for line shape functions it is \hbar\omega in eV. 
+        The unit of the proton potentials should be eV. 
+        The unit of the line shape functions should be eV^-1. 
 
-        ConvolKernel describes the common intramolecular vibration modes
-        ConvolKernel == None means there is no common modes
+        ConvolKernel describes the common intramolecular vibration modes, 
+        ConvolKernel == None means there is no common modes. 
         """
         if callable(GSProtonPot):
             self.GSProtonPot = GSProtonPot

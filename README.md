@@ -39,7 +39,7 @@ To calculate the PCEnT rate constant using the nonadiabatic PCEnT theory, we nee
 4. `DonorEmLineshape` (2D array or function): line shape function for donor emission
 5. `AcceptorAbsLineshape` (2D array or function): line shape function for acceptor absorption
 
-The input of proton potentials and line shape functions can be either a 2D array or a callable function. 
+The input of proton potential and the line shape function can be either a 2D array or a callable function. 
 
 If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (N, 2), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $`\hbar\omega`$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
 
@@ -119,7 +119,7 @@ Evib_GS, wfc_GS = system.get_ground_proton_states()
 Evib_reactant, wfc_reactant = system.get_reactant_proton_states()
 Evib_product, wfc_product = system.get_product_proton_states()
 ```
-$`P_{\mu}`$, $`S_{\mu\nu}`$, and the spectral convolution integral, which is defined as
+$`P_{\mu}`$, $`S_{\mu\nu}`$, and the spectral convolution integral between states $\mu$ and $\nu$, which is defined as
 
 ```math
 I_{\mu\nu} = \iint\mathrm{d}\omega_1 \mathrm{d}\omega_2\ L_{\rm D,em}(\omega_1-\omega_{\mu 0}^{\rm D}) K(\omega_1-\omega_2) L_{\rm A,abs}(\omega_2-\omega_{0\nu}^{\rm A})

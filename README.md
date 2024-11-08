@@ -24,7 +24,7 @@ K(\omega_1-\omega_2) = \frac{2\pi\hbar}{\sqrt{2\pi s_{\rm com} k_{\rm B}T}}\exp\
 where $`\omega_{\mu 0}^{\rm D}`$ and $`\omega_{0 \nu}^{\rm A}`$ should be calculated as the vertical transition frequencies (with all nuclei other than the transferring proton fixed), $`k_{\rm B}T`$ is the thermal energy, and $`s_D`$ and $`s_A`$ are the Stokes shift of the transition, which defines the width of the line shape function. For harmonic surfaces, they are also related to the reorganization energy $`\lambda`$ of the transition via $`s = 2\lambda`$. $`s_{\rm com}`$ can also be viewed as a Stokes shift term, but it only includes the reorganzation of the common modes. When $`s_{\rm com} \rightarrow 0`$, $`K(\omega_1-\omega_2) \rightarrow 2\pi\delta(\omega_1-\omega_2)`$. 
 
 ## Installation 
-To use the kinetic model, simply download the code and add it to your `$PYTHONPATH` variable.
+To use the pyPCEnT module, simply download the code and add it to your `$PYTHONPATH` variable.
 
 ## Documentation
 
@@ -41,7 +41,7 @@ To calculate the PCEnT rate constant using the nonadiabatic PCEnT theory, we nee
 
 The input of proton potentials and line shape functions can be either a 2D array or a callable function. 
 
-If these inputs are 2D array, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (N, 2), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $`\hbar\omega`$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
+If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (N, 2), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $`\hbar\omega`$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
 
 If these inputs are functions, they must only take one argument, for proton potentials, it is the proton position in Angstrom, for line shape functions it is $`\hbar\omega`$ in eV. The unit of the proton potentials should be eV. The unit of the line shape functions should be eV<sup>-1</sup>.
 

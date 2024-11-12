@@ -174,7 +174,7 @@ plt.plot(hbaromega, total_Dem(hbaromega), 'b-', lw=2, label=r'$\tilde{L}_{\rm D,
 plt.plot(hbaromega, total_Aabs(hbaromega), 'r-', lw=2, label=r'$\tilde{L}_{\rm A,abs}(\omega)$')
 ```
 
-The quantities $`P_{\sigma'}`$, $`S_{\mu\sigma}`$, and $`S_{\sigma'\nu}`$ can be accesses via
+The quantities $`P_{\sigma'}`$, $`S_{\mu\sigma}`$, and $`S_{\sigma'\nu}`$ can be accessed via
 ```python
 Pw = system.get_ground_state_distributions()
 Suw = system.get_proton_overlap_matrix_ReacGS()

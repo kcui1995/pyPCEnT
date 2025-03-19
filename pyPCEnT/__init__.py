@@ -5,7 +5,7 @@ from .FGH_1D import FGH_1D
 
 __all__ = ['Morse', 'Morse_inverted', 'Gaussian', 'poly6', 'poly8', 'multi_Gaussian', 
            'gen_Morse', 'gen_Morse_inverted', 'gen_double_well', 'gen_Gaussian_lineshape', 
-           'fit_poly6', 'fit_poly8', 'fit_Gaussian',
+           'fit_poly6', 'fit_poly8', 'bspline', 'fit_Gaussian',
            'find_roots', 'isnumber', 'isarray', 'copy_func', 
            'FGH_1D', 'pyPCEnT',
            'kB', 'h', 'hbar', 'c', 'massH', 'massD',

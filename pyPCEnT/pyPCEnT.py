@@ -32,7 +32,7 @@ class pyPCEnT(object):
     The program will automatically determine the ranges of \hbar\omega or proton position to perform subsequent calculations. 
     Users could fine tune these ranges by parseing additional inputs 'rmin', 'rmax', 'hbaromega_min', 'hbaromega_max'. 
     """
-    def __init__(self, GSProtonPot, ReacProtonPot, ProdProtonPot, DonorEmLineshape, AcceptorAbsLineshape, ConvolKernel=None, Vel=0.0434, NStates=10, NGridPot=256, NGridLineshape=500, FitOrder=8, **kwargs):
+    def __init__(self, GSProtonPot, ReacProtonPot, ProdProtonPot, DonorEmLineshape, AcceptorAbsLineshape, ConvolKernel=None, Vel=0.0434, NStates=10, NGridPot=256, NGridLineshape=500, Smooth='fit_poly6', **kwargs):
         """
         *** Initialization ***
         The input of the proton potential and the line shape function can be either a 2D array or a callable function. 

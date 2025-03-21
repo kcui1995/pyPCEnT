@@ -93,7 +93,7 @@ system = pyPCEnT(GSProtonPot, ReacProtonPot, ProdProtonPot, Dem, Aabs, Vel=Vel)
 Other parameters that can be modified during the initialization are
 
 8. `NStates` (int): number of proton vibrational states to be calculated, default = 10. One should test the convergence with respect to this quantity. 
-9. `NGridPot` (int): number of grid points used for FGH calculation, default = 128
+9. `NGridPot` (int): number of grid points used for FGH calculation, default = 256
 10. `NGridLineshape` (int): number of grip points used to calculate spectral overlap integral, defaut = 500
 11. `Smooth` (string): method to smooth the proton potential if given as 2Darray, possible choices are 'fit_poly6', 'fit_poly8', 'bspline', default = 'fit_poly6' 
 

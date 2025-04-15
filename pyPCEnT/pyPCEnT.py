@@ -332,12 +332,11 @@ class pyPCEnT(object):
         if self.ConvolKernel == None:
             return 2*np.pi*hbar*simps(LDem*LAabs, self.hbaromega)
         else:
-            LAabs_convoled = []
-            for hbaromega1 in self.hbaromega:
+            LAabs_convoled = np.zeros(len(hbaromega))
+            for ii, hbaromega1 in enumerate(self.hbaromega):
                 dhbaromega = hbaromega1-self.hbaromega
                 K = self.ConvolKernel(dhbaromega)
-                LAabs_convoled.append(simps(K*LAabs, self.hbaromega))
-            LAabs_convoled = np.array(LAabs_convoled)
+                LAabs_convoled[ii] = simps(K*LAabs, self.hbaromega)
             return hbar*simps(LDem*LAabs_convoled, self.hbaromega)
 
     def calc_spectral_overlap_matrix(self):

@@ -38,7 +38,7 @@ class pyPCEnT(object):
         The input of the proton potential and the line shape function can be either a 2D array or a callable function. 
 
         If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. 
-        By default, the proton potentials will be fitted to an 8th-order polynormial, while the line shape functions will be fitted as a sum of Gaussian functions. 
+        By default, the proton potentials will be fitted to an 8th-order polynomial, while the line shape functions will be fitted as a sum of Gaussian functions. 
         The 2D array should have shape (N, 2),
         for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, 
         for line shape functions, the first row is \hbar\omega in eV, the second row is the lins shape function in eV^-1. 

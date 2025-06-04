@@ -41,7 +41,7 @@ To calculate the PCEnT rate constant using the nonadiabatic PCEnT theory, we nee
 
 The input of proton potential and the line shape function can be either a 2D array or a callable function. 
 
-If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 8th-order polynomial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (2, N), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $`\hbar\omega`$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
+If these inputs are 2D arrays, a fitting will be performed to create a callable function for subsequent calculations. By default, the proton potentials will be fitted to an 6th-order polynomial, while the line shape functions will be fitted as a sum of Gaussian functions. The 2D array should have shape (2, N), for proton potentials, the first row is the proton position in Angstrom, the second row is the potential energy in eV, for line shape functions, the first row is $`\hbar\omega`$ in eV, the second row is the lins shape function in eV<sup>-1</sup>. 
 
 If these inputs are functions, they must only take one argument, for proton potentials, it is the proton position in Angstrom, for line shape functions it is $`\hbar\omega`$ in eV. The unit of the proton potentials should be eV. The unit of the line shape functions should be eV<sup>-1</sup>.
 

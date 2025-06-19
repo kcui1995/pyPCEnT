@@ -245,7 +245,7 @@ class pyPCEnT(object):
     def calc_proton_vibrational_states(self, mass=massH):
         """
         This function calculates the proton vibrational states (energies and wave functions)
-        corresponding to GSProtonPot, ReacProtonPot, and ProdProtonPot respectively. 
+        for proton moving in GSProtonPot, ReacProtonPot, and ProdProtonPot respectively. 
         The FGH_1D code implemented by Maxim Secor is used
         """
         # calculate proton potentials on a grid, self.rp
